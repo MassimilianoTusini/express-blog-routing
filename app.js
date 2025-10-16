@@ -7,6 +7,7 @@ const port = 3000;
 
 const postRouter = require("./routers/posts")
 
+
 // Middleware per servire file statici
 app.use(express.static("public"));
 
