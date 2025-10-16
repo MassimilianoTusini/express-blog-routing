@@ -10,33 +10,40 @@ const router = express.Router()
 
 
 // Rotte di CRUD sulla risorsa bacheca
-// Mostra
+// INDEX
 router.get("/", function (req, res) {
     res.json(menu) // primo bonus per mostrare tutta la lista json
 });
 
-// Store
+// SHOW
 router.get("/:id", function (req , res) {
-    res.send("Dettagli prodotto" + req.params.id)
+    const id = parseInt(req.params.id);
+    const post = menu.find(i => i.id === id);
+
+    if(!post) {
+        return res.status (404).send("Prodotto non trovato");
+    }
+
+    res.json(post)
 });
 
 
-// Aggiungi
+// CREATE
 router.post("/", function (req , res) {
     res.send("Aggiungi prodotto")
 });
 
-// Modifica tutto
+// UPDATE COMPLETO
 router.put("/:id", function (req , res) {
     res.send("Aggiorna prodotto" + req.params.id)
 });
 
-// Modifica parziale
+// UPDATE PARZIALE
 router.patch("/:id", function (req , res) {
     res.send("Modifica parziale prodotto" + req.params.id)
 });
 
-// Cancella
+// DELETE
 router.delete("/:id", function (req , res) {
     res.send("Cancella prodotto" + req.params.id)
 });
