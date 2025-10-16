@@ -1,14 +1,18 @@
 // Import del framework di express
 const express = require("express");
 
+// Import dell'array
+const menu = require("../data/menu")
 
 // Settiamo il router
 const router = express.Router()
 
+
+
 // Rotte di CRUD sulla risorsa bacheca
 // Mostra
-router.get("/", function (req , res) {
-    res.send("Lista dei prodotti")
+router.get("/", function (req, res) {
+    res.json(menu) // primo bonus per mostrare tutta la lista json
 });
 
 // Store
